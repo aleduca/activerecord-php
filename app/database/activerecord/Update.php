@@ -10,7 +10,7 @@ use Throwable;
 
 class Update implements ActiveRecordExecuteInterface
 {
-    public function __construct(private string $field, private string $value)
+    public function __construct(private string $field, private string|int $value)
     {
     }
     
