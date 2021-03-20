@@ -3,16 +3,14 @@
 namespace app\database\activerecord;
 
 use ReflectionClass;
-use app\database\interfaces\UpdateInterface;
 use app\database\interfaces\ActiveRecordInterface;
+use app\database\interfaces\ActiveRecordExecuteInterface;
 
 abstract class ActiveRecord implements ActiveRecordInterface
 {
     protected $table = null;
 
     protected $attributes = [];
-
-    protected $idTable = null;
 
     public function __construct()
     {
@@ -41,8 +39,8 @@ abstract class ActiveRecord implements ActiveRecordInterface
         return $this->attributes[$attribute];
     }
 
-    public function update(UpdateInterface $updateInterface)
+    public function execute(ActiveRecordExecuteInterface $activeRecordExecuteInterface)
     {
-        return $updateInterface->update($this);
+        return $activeRecordExecuteInterface->execute($this);
     }
 }
